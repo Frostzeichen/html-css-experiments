@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Wave illusion demonstration</title>
+		<style>
+			div {
+				height: 20px;
+				width: 20px;
+				background: red;
+				position: absolute;
+			}
+			#circle_1 {
+				top: 10px;
+				left: 10px;
+			}
+			#circle_2 {
+				top: 35px;
+				left: 10px;
+			}
+			#circle_3 {
+				top: 60px;
+				left: 10px;
+			}
+			#circle_4 {
+				top: 85px;
+				left: 10px;
+			}
+			#circle_5 {
+				top: 110px;
+				left: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="circle_1"></div>
+		<div id="circle_2"></div>
+		<div id="circle_3"></div>
+		<div id="circle_4"></div>
+		<div id="circle_5"></div>
+		<script>
+			circle1Left = 10;
+			circle1Max = 50;
+			circle1Min = 0;
+			direction1 = true;
+			circle2Left = 5;
+			circle2Max = 50;
+			circle2Min = 0;
+			direction2 = true;
+			circle3Left = 0;
+			circle3Max = 50;
+			circle3Min = 0;
+			direction3 = true;
+			circle4Left = -5;
+			circle4Max = 50;
+			circle4Min = 0;
+			direction4 = true;
+			circle5Left = -10;
+			circle5Max = 50;
+			circle5Min = 0;
+			direction5 = true;
+
+			const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+			const move = async (speed) => {
+				while (true) {
+					if (direction1) {
+						if (circle1Left < circle1Max) {
+							document.querySelector("#circle_1").style.left = `${circle1Left += 1}px`;
+						} else {
+							direction1 = !direction1
+						}
+					} else {
+						if (circle1Left > circle1Min) {
+							document.querySelector("#circle_1").style.left = `${circle1Left -= 1}px`;
+						} else {
+							direction1 = !direction1
+						}
+					}
+
+					if (direction2) {
+						if (circle2Left < circle2Max) {
+							document.querySelector("#circle_2").style.left = `${circle2Left += 1}px`;
+						} else {
+							direction2 = !direction2
+						}
+					} else {
+						if (circle2Left > circle2Min) {
+							document.querySelector("#circle_2").style.left = `${circle2Left -= 1}px`;
+						} else {
+							direction2 = !direction2
+						}
+					}
+
+					if (direction3) {
+						if (circle3Left < circle3Max) {
+							document.querySelector("#circle_3").style.left = `${circle3Left += 1}px`;
+						} else {
+							direction3 = !direction3
+						}
+					} else {
+						if (circle3Left > circle3Min) {
+							document.querySelector("#circle_3").style.left = `${circle3Left -= 1}px`;
+						} else {
+							direction3 = !direction3
+						}
+					}
+
+					if (direction4) {
+						if (circle4Left < circle4Max) {
+							document.querySelector("#circle_4").style.left = `${circle4Left += 1}px`;
+						} else {
+							direction4 = !direction4
+						}
+					} else {
+						if (circle4Left > circle4Min) {
+							document.querySelector("#circle_4").style.left = `${circle4Left -= 1}px`;
+						} else {
+							direction4 = !direction4
+						}
+					}
+
+					if (direction5) {
+						if (circle5Left < circle5Max) {
+							document.querySelector("#circle_5").style.left = `${circle5Left += 1}px`;
+						} else {
+							direction5 = !direction5
+						}
+					} else {
+						if (circle5Left > circle5Min) {
+							document.querySelector("#circle_5").style.left = `${circle5Left -= 1}px`;
+						} else {
+							direction5 = !direction5
+						}
+					}
+
+					await sleep(speed);
+				}
+			}
+
+			move(5);
+		</script>
+	</body>
+</html>
